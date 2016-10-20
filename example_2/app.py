@@ -1,35 +1,38 @@
 # coding: utf-8
 
+from difflib import SequenceMatcher, get_close_matches
 from flask import Flask, jsonify, request
 
 
 app = Flask(__name__)
 
 
-def _values_to_int(values):
-    return map(int, values)
-
-
 @app.route('/', methods=('GET', ))
 def home():
     return jsonify(
-        {'message': 'Valid operations: sum, subtraction'}
+        {
+            'API': [
+                '/close_match',
+                '/proximity'
+            ]
+        }
     )
 
 
-@app.route('/sum', methods=('GET', ))
-def sum():
-    a, b = _values_to_int(request.args.values())
+@app.route('/close_match', methods=('GET', ))
+def close_match():
+    possibilities = request.args.get('possibilities').split(',')
+    word = request.args.get('word')
     return jsonify({
-        'result': a + b
+        'result': get_close_matches(word, possibilities, n=1)
     })
 
 
-@app.route('/subtraction', methods=('GET', ))
-def subtraction():
-    a, b = _values_to_int(request.args.values())
+@app.route('/proximity', methods=('GET', ))
+def proximity():
+    word_a, word_b = request.args.get('word_a'), request.args.get('word_b')
     return jsonify({
-        'result': a - b
+        'result': SequenceMatcher(a=word_a, b=word_b).ratio()
     })
 
 
