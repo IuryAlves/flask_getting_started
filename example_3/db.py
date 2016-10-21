@@ -17,3 +17,4 @@ class ClosestWordLog(ActivityLog):
 
 class ProximityLog(ActivityLog):
 	proximity = fields.IntField(required=True)
+	word_b = fields.StringField(required=True)

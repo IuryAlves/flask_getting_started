@@ -40,7 +40,7 @@ def closest_word():
 def proximity():
     word_a, word_b = request.args.get('word_a'), request.args.get('word_b')
     proximity = SequenceMatcher(a=word_a, b=word_b).ratio()
-    ProximityLog(word=word_a, proximity=proximity).save()
+    ProximityLog(word=word_a, word_b=word_b, proximity=proximity).save()
     return jsonify({
         'proximity': proximity
     })
