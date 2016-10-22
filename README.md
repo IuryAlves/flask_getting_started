@@ -1,7 +1,7 @@
 # Flask Getting Started
 
 
-Exemplos da minha palestra [Resolvendo seus problemas web com Flask](https://slides.com/iuryalvesdesouza-1/flask/live#/)
+Exemplos da minha palestra [Resolvendo seus problemas web com Flask](http://slides.com/iuryalvesdesouza-1/flask)
 
 
 ## Rodando
@@ -10,15 +10,15 @@ Exemplos da minha palestra [Resolvendo seus problemas web com Flask](https://sli
 
 * Instale o [docker](https://docs.docker.com/engine/installation/) e depois:
 
-    docker-compose up
+        docker-compose up
 
 ### Rodando a versão final da aplicação
 
 
 * Instale as depêndencias
 
-    pip install -r requirements.txt
+        pip install -r requirements.txt
 
 * Rodando o Flask:
     
-    python example_6/run.py
+        python example_6/run.py
