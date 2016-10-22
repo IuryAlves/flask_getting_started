@@ -1,7 +1,7 @@
-# coding: utf8
+    # coding: utf8
 
 from app import app
 
 
 if __name__ == '__main__':
-    app.run(debug=app.config.get('DEBUG'))
+    app.run(debug=True)

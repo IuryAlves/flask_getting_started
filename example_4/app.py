@@ -6,8 +6,7 @@ import log_service
 
 
 app = Flask(__name__)
-app.config.from_object('settings')
-connect(host=app.config.get('DB_HOST'), port=app.config.get('DB_PORT'))
+connect(host='localhost', port=27017)
 
 
 @app.route('/', methods=('GET', ))
