@@ -4,6 +4,7 @@ from flask import Flask, jsonify, request
 from mongoengine import connect
 import log_service
 
+
 app = Flask(__name__)
 app.config.from_object('settings')
 connect(host=app.config.get('DB_HOST'), port=app.config.get('DB_PORT'))
@@ -37,13 +38,4 @@ def proximity():
     proximity = log_service.get_proximity(word_a, word_b)
     return jsonify({
         'proximity': proximity
-    })
-
-
-@app.route('/logs', methods=('GET', ))
-def logs():
-    logs = log_service.list_logs()
-
-    return jsonify({
-        'logs': logs
     })

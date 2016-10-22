@@ -17,13 +17,3 @@ def get_proximity(word_a, word_b):
 	proximity = difflib.SequenceMatcher(a=word_a, b=word_b).ratio()
 	ProximityLog(word=word_a, word_b=word_b, proximity=proximity).save()
 	return proximity
-
-
-def list_logs():
-    proximity_logs = ProximityLog.objects.all()
-    closest_word_logs = ClosestWordLog.objects.all()
-
-    return {
-        'proximity_logs': [log.to_dict() for log in proximity_logs],
-        'closest_word_logs': [log.to_dict() for log in closest_word_logs]
-    }
