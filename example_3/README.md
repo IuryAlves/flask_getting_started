@@ -1,7 +1,3 @@
-### Baixando o container 
+### Rodando o Mongo DB
 
-	docker pull mongo:3.0
-
-### Rodando
-
-	docker run -p 27017:27017 mongo:3.0
+	docker-compose up

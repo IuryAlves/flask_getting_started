@@ -1,13 +1,12 @@
 # coding: utf-8
 
-from difflib import SequenceMatcher, get_close_matches
 from flask import Flask, jsonify, request
 from mongoengine import connect
-from db import ClosestWordLog, ProximityLog
-
+import log_service
 
 app = Flask(__name__)
-
+app.config.from_object('settings')
+connect(host=app.config.get('DB_HOST'), port=app.config.get('DB_PORT'))
 
 
 @app.route('/', methods=('GET', ))
@@ -26,11 +25,7 @@ def home():
 def closest_word():
     possibilities = request.args.get('possibilities').split(',')
     word = request.args.get('word')
-    try:
-        closest_word = get_close_matches(word, possibilities, n=1)[0]
-    except IndexError:
-        closest_word = 'No matches'
-    ClosestWordLog(word=word, closest_word=closest_word).save()
+    closest_word = log_service.get_close_matches(word, possibilities)
     return jsonify({
         'closest_word': closest_word
     })
@@ -39,23 +34,16 @@ def closest_word():
 @app.route('/proximity', methods=('GET', ))
 def proximity():
     word_a, word_b = request.args.get('word_a'), request.args.get('word_b')
-    proximity = SequenceMatcher(a=word_a, b=word_b).ratio()
-    ProximityLog(word=word_a, proximity=proximity).save()
+    proximity = log_service.get_proximity(word_a, word_b)
     return jsonify({
         'proximity': proximity
     })
 
+
 @app.route('/logs', methods=('GET', ))
 def logs():
-    proximity_logs = ProximityLog.objects.all()
-    closest_word_logs = ClosestWordLog.objects.all()
+    logs = log_service.list_logs()
 
     return jsonify({
-        'proximity_logs': [log.to_dict() for log in proximity_logs],
-        'closest_word_log': [log.to_dict() for log in closest_word_logs]
-        })
-
-
-if __name__ == '__main__':
-    connect('localhost:27017')
-    app.run(debug=True)
+        'logs': logs
+    })
