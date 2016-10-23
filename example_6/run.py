@@ -1,9 +1,7 @@
-# coding: utf-8
+# coding: utf8
 
-from mongoengine import connect
 from app import app
 
 
 if __name__ == '__main__':
-	connect('localhost:27017')
-	app.run(debug=True)
+    app.run(debug=app.config.get('DEBUG'))
