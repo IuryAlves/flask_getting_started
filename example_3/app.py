@@ -5,9 +5,7 @@ from flask import Flask, jsonify, request
 from mongoengine import connect
 from db import ClosestWordLog, ProximityLog
 
-
 app = Flask(__name__)
-
 
 
 @app.route('/', methods=('GET', ))
