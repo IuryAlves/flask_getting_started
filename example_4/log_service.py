@@ -1,7 +1,7 @@
 # coding: utf-8
 
 import difflib
-from db import ClosestWordLog, ProximityLog
+from documents import ClosestWordLog, ProximityLog
 
 
 def get_close_matches(word, possibilities):

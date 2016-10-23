@@ -5,7 +5,7 @@ import json
 import unittest
 from mongoengine import connect
 from app import app
-from db import ClosestWordLog, ProximityLog
+from documents import ClosestWordLog, ProximityLog
 
 
 class APITestCase(unittest.TestCase):

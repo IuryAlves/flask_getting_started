@@ -3,7 +3,7 @@
 from difflib import SequenceMatcher, get_close_matches
 from flask import Flask, jsonify, request
 from mongoengine import connect
-from db import ClosestWordLog, ProximityLog
+from documents import ClosestWordLog, ProximityLog
 
 app = Flask(__name__)
 
