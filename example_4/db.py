@@ -4,17 +4,17 @@ from mongoengine import Document, fields
 
 
 class ActivityLog(Document):
-	meta = {
-	'allow_inheritance': True
-	}
+    meta = {
+        'allow_inheritance': True
+    }
 
-	word = fields.StringField(required=True)
+    word = fields.StringField(required=True)
 
 
 class ClosestWordLog(ActivityLog):
-	closest_word = fields.StringField(required=True)
-	
+    closest_word = fields.StringField(required=True)
+
 
 class ProximityLog(ActivityLog):
-	proximity = fields.IntField(required=True)
-	word_b = fields.StringField(required=True)
+    proximity = fields.IntField(required=True)
+    word_b = fields.StringField(required=True)

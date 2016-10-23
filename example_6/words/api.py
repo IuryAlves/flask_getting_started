@@ -5,6 +5,7 @@ from . import log_service
 
 words_blueprint = Blueprint('word', __name__)
 
+
 @words_blueprint.route('/', methods=('GET', ))
 def home():
     return jsonify(

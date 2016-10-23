@@ -14,6 +14,6 @@ def get_close_matches(word, possibilities):
 
 
 def get_proximity(word_a, word_b):
-	proximity = difflib.SequenceMatcher(a=word_a, b=word_b).ratio()
-	ProximityLog(word=word_a, word_b=word_b, proximity=proximity).save()
-	return proximity
+    proximity = difflib.SequenceMatcher(a=word_a, b=word_b).ratio()
+    ProximityLog(word=word_a, word_b=word_b, proximity=proximity).save()
+    return proximity
