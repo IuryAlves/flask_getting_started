@@ -4,8 +4,12 @@ from flask import Flask, jsonify, request
 from mongoengine import connect
 import log_service
 
-
+# objeto principal do flask
+# responsável por criar a sua app
+# o parametro __name__  serve para o flask
+# saber o que tem na sua aplicação.
 app = Flask(__name__)
+
 connect(host='localhost', port=27017)
 
 

@@ -4,6 +4,10 @@ from difflib import SequenceMatcher, get_close_matches
 from flask import Flask, jsonify, request
 
 
+# objeto principal do flask
+# responsável por criar a sua app
+# o parametro __name__  serve para o flask
+# saber o que tem na sua aplicação.
 app = Flask(__name__)
 
 

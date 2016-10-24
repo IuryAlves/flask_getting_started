@@ -1,11 +1,15 @@
-# coding: utf-8
+    # coding: utf-8
 
 from flask import Flask, jsonify, request
 from mongoengine import connect
 import log_service
 
-
+# objeto principal do flask
+# responsável por criar a sua app
+# o parametro __name__  serve para o flask
+# saber o que tem na sua aplicação.
 app = Flask(__name__)
+
 app.config.from_object('settings')
 connect(host=app.config.get('DB_HOST'), port=app.config.get('DB_PORT'))
 
