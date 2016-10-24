@@ -13,6 +13,7 @@ class APITestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.client = app.test_client()
+        app.config['TESTING'] = True        
         connect('localhost:27017')
 
     @classmethod

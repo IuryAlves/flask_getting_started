@@ -10,6 +10,7 @@ class APITestCase(unittest.TestCase):
 
     def setUp(self):
         self.client = app.test_client()
+        app.config['TESTING'] = True
 
     def test_closest_word(self):
         url = '/closest_word?possibilities={possibilities}&word={word}'.format(
