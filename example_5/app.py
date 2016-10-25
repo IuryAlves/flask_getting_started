@@ -2,7 +2,7 @@
 
 from flask import Flask, jsonify, request
 from mongoengine import connect
-import log_service
+import match_service
 
 # objeto principal do flask
 # responsável por criar a sua app
@@ -30,7 +30,7 @@ def home():
 def closest_word():
     possibilities = request.args.get('possibilities').split(',')
     word = request.args.get('word')
-    closest_word = log_service.get_close_matches(word, possibilities)
+    closest_word = match_service.get_close_matches(word, possibilities)
     return jsonify({
         'closest_word': closest_word
     })
@@ -39,7 +39,7 @@ def closest_word():
 @app.route('/proximity', methods=('GET', ))
 def proximity():
     word_a, word_b = request.args.get('word_a'), request.args.get('word_b')
-    proximity = log_service.get_proximity(word_a, word_b)
+    proximity = match_service.get_proximity(word_a, word_b)
     return jsonify({
         'proximity': proximity
     })

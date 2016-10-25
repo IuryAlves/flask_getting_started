@@ -1,7 +1,7 @@
 # coding: utf-8
 
 from flask import Blueprint, request, jsonify
-from . import log_service
+from . import match_service
 
 words_blueprint = Blueprint('word', __name__)
 
@@ -22,7 +22,7 @@ def home():
 def closest_word():
     possibilities = request.args.get('possibilities').split(',')
     word = request.args.get('word')
-    closest_word = log_service.get_close_matches(word, possibilities)
+    closest_word = match_service.get_close_matches(word, possibilities)
     return jsonify({
         'closest_word': closest_word
     })
@@ -31,7 +31,7 @@ def closest_word():
 @words_blueprint.route('/proximity', methods=('GET', ))
 def proximity():
     word_a, word_b = request.args.get('word_a'), request.args.get('word_b')
-    proximity = log_service.get_proximity(word_a, word_b)
+    proximity = match_service.get_proximity(word_a, word_b)
     return jsonify({
         'proximity': proximity
     })
