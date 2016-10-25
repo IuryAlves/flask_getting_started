@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from flask import Flask
+from flask import Flask, jsonify
 
 # objeto principal do flask
 # responsável por criar a sua app
@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return 'Hello World !'
+    return jsonify({'message': 'Hello World !'})
 
 
 if __name__ == '__main__':
