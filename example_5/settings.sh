@@ -1,0 +1,1 @@
+export SETTINGS=~/projects/flask_getting_started/example_5/settings.cfg
