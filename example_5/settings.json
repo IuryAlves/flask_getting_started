@@ -1,5 +1,6 @@
 {
     "DB_HOST": "localhost",
     "DB_PORT": 27017,
-    "DEBUG": true
+    "DEBUG": true,
+    "PORT": 8000
 }
